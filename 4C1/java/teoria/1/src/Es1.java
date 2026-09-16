@@ -1,5 +1,5 @@
 public class Es1 {
-    void main(String[] args) {
+    public static void main(String[] args) {
         System.out.println("Hello world");
 
         System.out.print("Hello ");
