@@ -1,0 +1,12 @@
+> crea/sostituisce file
+>> crea/continua file
+
+echo "" > a.txt
+touch a.txt (crea file vuoto)
+cat > a.txt (crea file e ti permette di scriverci subito)
+cat a.txt > appunti.txt (scrive il contenuto di cat a.txt (quindi a.txt) in appunti.txt)
+nano a.txt (modifica/crea file)
+
+cp (-r) <source> <destination> (copy (recoursive))
+mv <source> <destination> (move)
+rm (-r) <source> <destination> (remove (recoursive))
