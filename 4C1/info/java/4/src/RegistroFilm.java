@@ -28,7 +28,7 @@ public class RegistroFilm {
             regista[i] = askString("Regista: ");
             genere[i] = askString("Genere: ");
             System.out.print("Voto (1-10): ");
-            voto[i] = askFloat("Voto (1-10): ");
+            voto[i] = input.nextFloat();
         }
 
         int scelta = 0;
