@@ -1,0 +1,78 @@
+mattiafausti@ITIS-INFO2-3373 ~> mkdir LAB_NUMERICO
+mattiafausti@ITIS-INFO2-3373 ~> cd LAB_NUMERICO/
+mattiafausti@ITIS-INFO2-3373 ~/LAB_NUMERICO> touch appunti.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_NUMERICO> touch dati.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_NUMERICO> touch relazione.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_NUMERICO> mkdir Materiale
+mattiafausti@ITIS-INFO2-3373 ~/LAB_NUMERICO> touch Materiale/lezione1.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_NUMERICO> touch Materiale/lezione2.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_NUMERICO> mkdir Materiale/Esercizi
+mattiafausti@ITIS-INFO2-3373 ~/LAB_NUMERICO> touch Materiale/Esercizi/esercizio1.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_NUMERICO> touch Materiale/Esercizi/esercizio2.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_NUMERICO> mkdir Riservato
+mattiafausti@ITIS-INFO2-3373 ~/LAB_NUMERICO> touch Riservato/voti.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_NUMERICO> touch Riservato/note_private.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_NUMERICO> tree -p
+[drwxr-xr-x]  .
+├── [drwxr-xr-x]  Materiale
+│   ├── [drwxr-xr-x]  Esercizi
+│   │   ├── [-rw-r--r--]  esercizio1.txt
+│   │   └── [-rw-r--r--]  esercizio2.txt
+│   ├── [-rw-r--r--]  lezione1.txt
+│   └── [-rw-r--r--]  lezione2.txt
+├── [drwxr-xr-x]  Riservato
+│   ├── [-rw-r--r--]  note_private.txt
+│   └── [-rw-r--r--]  voti.txt
+├── [-rw-r--r--]  appunti.txt
+├── [-rw-r--r--]  dati.txt
+└── [-rw-r--r--]  relazione.txt
+
+4 directories, 9 files
+mattiafausti@ITIS-INFO2-3373 ~/LAB_NUMERICO> chmod g-r dati.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_NUMERICO> chmod o-r dati.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_NUMERICO> chmod o-r relazione.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_NUMERICO> chmod o-r Riservato/voti.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_NUMERICO> chmod g-r Riservato/voti.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_NUMERICO> chmod g-r Riservato/note_private.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_NUMERICO> chmod o-r Riservato/note_private.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_NUMERICO> chmod o-rx Materiale/Esercizi/
+mattiafausti@ITIS-INFO2-3373 ~/LAB_NUMERICO> chmod o-rx Riservato/
+mattiafausti@ITIS-INFO2-3373 ~/LAB_NUMERICO> chmod g-rx Riservato/
+mattiafausti@ITIS-INFO2-3373 ~/LAB_NUMERICO> tree -p
+[drwxr-xr-x]  .
+├── [drwxr-xr-x]  Materiale
+│   ├── [drwxr-x---]  Esercizi
+│   │   ├── [-rw-r--r--]  esercizio1.txt
+│   │   └── [-rw-r--r--]  esercizio2.txt
+│   ├── [-rw-r--r--]  lezione1.txt
+│   └── [-rw-r--r--]  lezione2.txt
+├── [drwx------]  Riservato
+│   ├── [-rw-------]  note_private.txt
+│   └── [-rw-------]  voti.txt
+├── [-rw-r--r--]  appunti.txt
+├── [-rw-------]  dati.txt
+└── [-rw-r-----]  relazione.txt
+
+4 directories, 9 files
+mattiafausti@ITIS-INFO2-3373 ~/LAB_NUMERICO> tree -p
+[drwxr-xr-x]  .
+├── [drwxr-xr-x]  Materiale
+│   ├── [drwxr-xr-x]  Esercizi
+│   │   ├── [-rwxr-xr-x]  esercizio1.txt
+│   │   └── [-rwxr-xr-x]  esercizio2.txt
+│   ├── [-rwxr-xr-x]  lezione1.txt
+│   └── [-rwxr-xr-x]  lezione2.txt
+├── [drwx------]  Riservato
+│   ├── [-rw-------]  note_private.txt
+│   └── [-rw-------]  voti.txt
+├── [-rw-r--r--]  appunti.txt
+├── [-rw-------]  dati.txt
+└── [-rw-r-----]  relazione.txt
+
+4 directories, 9 files
+
+
+sono state applicate gli stessi permessi della cartella
+si
+si
+perché modifica tutti i file all'interno di una cartella

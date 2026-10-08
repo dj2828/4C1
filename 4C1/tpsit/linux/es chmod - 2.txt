@@ -1,0 +1,61 @@
+mattiafausti@ITIS-INFO2-3373 ~> mkdir LAB_PERMESSI
+mattiafausti@ITIS-INFO2-3373 ~> cd LAB_PERMESSI/
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> touch appunti.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> touch relazione.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> touch dati.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> mkdir Condivisi
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> touch Condivisi/documento.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> touch Condivisi/note.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI [1]> mkdir Privato
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> touch Privato/personale.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> ls -la
+total 16
+drwxr-xr-x 4 mattiafausti mattiafausti 4096 Oct  8 11:12 ./
+drwxr-x--- 9 mattiafausti mattiafausti 4096 Oct  8 11:11 ../
+drwxr-xr-x 2 mattiafausti mattiafausti 4096 Oct  8 11:12 Condivisi/
+drwxr-xr-x 2 mattiafausti mattiafausti 4096 Oct  8 11:12 Privato/
+-rw-r--r-- 1 mattiafausti mattiafausti    0 Oct  8 11:11 appunti.txt
+-rw-r--r-- 1 mattiafausti mattiafausti    0 Oct  8 11:11 dati.txt
+-rw-r--r-- 1 mattiafausti mattiafausti    0 Oct  8 11:11 relazione.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> chmod u+rw appunti.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> chmod g+r appunti.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> ls -l
+total 8
+drwxr-xr-x 2 mattiafausti mattiafausti 4096 Oct  8 11:12 Condivisi/
+drwxr-xr-x 2 mattiafausti mattiafausti 4096 Oct  8 11:12 Privato/
+-rw-r----- 1 mattiafausti mattiafausti    0 Oct  8 11:11 appunti.txt
+-rw-r--r-- 1 mattiafausti mattiafausti    0 Oct  8 11:11 dati.txt
+-rw-r--r-- 1 mattiafausti mattiafausti    0 Oct  8 11:11 relazione.txt
+attiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> chmod g+w appunti.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> ls -l
+total 8
+drwxr-xr-x 2 mattiafausti mattiafausti 4096 Oct  8 11:12 Condivisi/
+drwxr-xr-x 2 mattiafausti mattiafausti 4096 Oct  8 11:12 Privato/
+-rw-rw---- 1 mattiafausti mattiafausti    0 Oct  8 11:11 appunti.txt
+-rw-r--r-- 1 mattiafausti mattiafausti    0 Oct  8 11:11 dati.txt
+-rw-r--r-- 1 mattiafausti mattiafausti    0 Oct  8 11:11 relazione.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> chmod g-w appunti.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> chmod o-r relazione.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> chmod g-r dati.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> chmod o-r dati.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> chmod o-x Condivisi/
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> cd Condivisi/
+mattiafausti@ITIS-INFO2-3373 ~/L/Condivisi> ls -l
+total 0
+-rw-r--r-- 1 mattiafausti mattiafausti 0 Oct  8 11:12 documento.txt
+-rw-r--r-- 1 mattiafausti mattiafausti 0 Oct  8 11:12 note.txt
+mattiafausti@ITIS-INFO2-3373 ~/L/Condivisi> cd ..
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> chmod g-rx Privato/
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> chmod o-rx Privato/
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> tree -p
+[drwxr-xr-x]  .
+├── [drwxr-xr--]  Condivisi
+│   ├── [-rw-r--r--]  documento.txt
+│   └── [-rw-r--r--]  note.txt
+├── [drwx------]  Privato
+│   └── [-rw-r--r--]  personale.txt
+├── [-rw-r-----]  appunti.txt
+├── [-rw-------]  dati.txt
+└── [-rw-r-----]  relazione.txt
+
+3 directories, 6 files

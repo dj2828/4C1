@@ -1,0 +1,30 @@
+-rw-r----- 1 studente studenti 150 Sep 16 10:40 appunti.txt
+
+-rw------- 1 studente studenti 280 Sep 16 10:45 dati.txt
+
+drwxr-x--- 2 studente studenti 4096 Sep 16 10:50 Archivio
+
+drwx------ 2 studente studenti 4096 Sep 16 11:00 Privato
+
+se è un file oppure una directory; file, file, directory, directory
+
+chi è il proprietario; studente
+
+qual è il gruppo proprietario; studenti
+
+quali permessi possiede USER; rw, rw, rwx, rwx
+
+quali permessi possiede GROUP; r, , rx, .
+
+quali permessi possiedono OTHERS; , , , .
+
+chi può leggere; u g, u, u g, u.
+
+chi può modificare; u, u, u, u
+
+nel caso delle directory, chi può entrarvi/attraversarle. -, -, u g, u.
+
+-rw-r-----
+-rw-------
+drwxr-x---
+drwx------
