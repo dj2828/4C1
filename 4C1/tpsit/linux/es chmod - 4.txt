@@ -1,0 +1,154 @@
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> tree
+.
+├── Archivio
+│   ├── Copie
+│   │   └── copia.txt
+│   └── vecchio.txt
+├── Condivisi
+│   ├── documento.txt
+│   └── note.txt
+├── Privato
+│   └── personale.txt
+├── appunti.txt
+├── dati.txt
+└── relazione.txt
+
+5 directories, 8 files
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> touch Privato/riservato.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> tre
+Command 'tre' not found, but can be installed with:
+sudo apt install tre-command
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI [127]> tre
+Command 'tre' not found, but can be installed with:
+sudo apt install tre-command
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI [127]> treee
+Command 'treee' not found, did you mean:
+  command 'tree' from snap tree (2.1.3+pkg-5852)
+  command 'tree' from deb tree (2.3.1-1)
+  command 'trexe' from deb buildbox (1.4.0-1)
+See 'snap info <snapname>' for additional versions.
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI [127]> tree
+.
+├── Archivio
+│   ├── Copie
+│   │   └── copia.txt
+│   └── vecchio.txt
+├── Condivisi
+│   ├── documento.txt
+│   └── note.txt
+├── Privato
+│   ├── personale.txt
+│   └── riservato.txt
+├── appunti.txt
+├── dati.txt
+└── relazione.txt
+
+5 directories, 9 files
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> dir
+Archivio  Condivisi  Privato  appunti.txt  dati.txt  relazione.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> ls
+Archivio/  Condivisi/  Privato/  appunti.txt  dati.txt  relazione.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> dir -l
+total 12
+drwxr-xr-x 3 mattiafausti mattiafausti 4096 Oct 13 10:19 Archivio
+drwxr-xr-- 2 mattiafausti mattiafausti 4096 Oct  8 11:12 Condivisi
+drwx------ 2 mattiafausti mattiafausti 4096 Oct 13 10:20 Privato
+-rw-r----- 1 mattiafausti mattiafausti    0 Oct  8 11:11 appunti.txt
+-rw------- 1 mattiafausti mattiafausti    0 Oct  8 11:11 dati.txt
+-rw-r----- 1 mattiafausti mattiafausti    0 Oct  8 11:11 relazione.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> chmod o+r relazione.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> ls -l
+total 12
+drwxr-xr-x 3 mattiafausti mattiafausti 4096 Oct 13 10:19 Archivio/
+drwxr-xr-- 2 mattiafausti mattiafausti 4096 Oct  8 11:12 Condivisi/
+drwx------ 2 mattiafausti mattiafausti 4096 Oct 13 10:20 Privato/
+-rw-r----- 1 mattiafausti mattiafausti    0 Oct  8 11:11 appunti.txt
+-rw------- 1 mattiafausti mattiafausti    0 Oct  8 11:11 dati.txt
+-rw-r--r-- 1 mattiafausti mattiafausti    0 Oct  8 11:11 relazione.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> chmod 755 Condivisi/
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> ls -l
+total 12
+drwxr-xr-x 3 mattiafausti mattiafausti 4096 Oct 13 10:19 Archivio/
+drwxr-xr-x 2 mattiafausti mattiafausti 4096 Oct  8 11:12 Condivisi/
+drwx------ 2 mattiafausti mattiafausti 4096 Oct 13 10:20 Privato/
+-rw-r----- 1 mattiafausti mattiafausti    0 Oct  8 11:11 appunti.txt
+-rw------- 1 mattiafausti mattiafausti    0 Oct  8 11:11 dati.txt
+-rw-r--r-- 1 mattiafausti mattiafausti    0 Oct  8 11:11 relazione.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> chmod 700 Privato/
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> ls -l
+total 12
+drwxr-xr-x 3 mattiafausti mattiafausti 4096 Oct 13 10:19 Archivio/
+drwxr-xr-x 2 mattiafausti mattiafausti 4096 Oct  8 11:12 Condivisi/
+drwx------ 2 mattiafausti mattiafausti 4096 Oct 13 10:20 Privato/
+-rw-r----- 1 mattiafausti mattiafausti    0 Oct  8 11:11 appunti.txt
+-rw------- 1 mattiafausti mattiafausti    0 Oct  8 11:11 dati.txt
+-rw-r--r-- 1 mattiafausti mattiafausti    0 Oct  8 11:11 relazione.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> tree -l
+.
+├── Archivio
+│   ├── Copie
+│   │   └── copia.txt
+│   └── vecchio.txt
+├── Condivisi
+│   ├── documento.txt
+│   └── note.txt
+├── Privato
+│   ├── personale.txt
+│   └── riservato.txt
+├── appunti.txt
+├── dati.txt
+└── relazione.txt
+
+5 directories, 9 files
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> chmod 644 Condivisi/documento.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> chmod 640 Condivisi/note.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> chmod 400 Privato/personale.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> chmod 400 Privato/riservato.txt
+
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> chmod 755 Archivio/
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> ls -l
+total 12
+drwxr-xr-x 3 mattiafausti mattiafausti 4096 Oct 13 10:19 Archivio/
+drwxr-xr-x 2 mattiafausti mattiafausti 4096 Oct  8 11:12 Condivisi/
+drwx------ 2 mattiafausti mattiafausti 4096 Oct 13 10:20 Privato/
+-rw-r----- 1 mattiafausti mattiafausti    0 Oct  8 11:11 appunti.txt
+-rw------- 1 mattiafausti mattiafausti    0 Oct  8 11:11 dati.txt
+-rw-r--r-- 1 mattiafausti mattiafausti    0 Oct  8 11:11 relazione.txt
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> chmod 750 Archivio/Copie/
+mattiafausti@ITIS-INFO2-3373 ~/LAB_PERMESSI> tree -p
+[drwxr-xr-x]  .
+├── [drwxr-xr-x]  Archivio
+│   ├── [drwxr-x---]  Copie
+│   │   └── [-rw-r--r--]  copia.txt
+│   └── [-rw-r--r--]  vecchio.txt
+├── [drwxr-xr-x]  Condivisi
+│   ├── [-rw-r--r--]  documento.txt
+│   └── [-rw-r-----]  note.txt
+├── [drwx------]  Privato
+│   ├── [-r--------]  personale.txt
+│   └── [-r--------]  riservato.txt
+├── [-rw-r-----]  appunti.txt
+├── [-rw-------]  dati.txt
+└── [-rw-r--r--]  relazione.txt
+
+
+
+
+
+
+
+
+
+
+Forma simbolica Forma numerica
+
+rw-r--r-- ________ 644
+rw------- ________ 600
+rwxr-x--- ________ 750
+rwx------ ________ 700
+rwxr-xr-x ________ 755
+rw-r-----  640
+rw-------  600
+rwxr-x---  750
+rwx------  700
+rwxr-xr-x 755
