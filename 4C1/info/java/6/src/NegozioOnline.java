@@ -50,7 +50,7 @@ public class NegozioOnline {
             System.out.print("""
                     \n1) Visualizzare tutti gli ordini
                     2) Cercare un ordine
-                    3) Modificare l’importo di un ordineù
+                    3) Modificare l’importo di un ordine
                     4) Modificare il nome del cliente
                     5) Cancellare un ordine
                     6) Calcolare l’incasso totale
