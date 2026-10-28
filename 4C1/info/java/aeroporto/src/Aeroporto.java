@@ -87,7 +87,7 @@ class Aeroporto {
         System.out.println(separatore);
     }
 
-    static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
         Volo[] voli = initVoli();
 
 //        for (Volo i: voli) {
