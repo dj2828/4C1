@@ -5,11 +5,18 @@ class Volo {
     public String destinazione;
     public int orarioPartenzaMinuti;
     public int orarioArrivoMinuti;
+
     public int postiTotali;
-    public int postiOccupati;
+    public int postiTotaliEconomy;
+    public int postiTotaliEconomyOccupati;
+    public int postiTotaliBusiness;
+    public int postiTotaliBusinessOccupati;
+
     public int durataMinuti;
     public int gate;
-    public float prezzo;
+
+    public float prezzoEconomy;
+    public float prezzoBusiness;
 
     static Random random = new Random();
 
@@ -29,8 +36,29 @@ class Volo {
         this.postiTotali = postiTotali;
         this.gate = gate;
 
-        this.postiOccupati = random.nextInt(postiTotali);
         this.durataMinuti = Math.abs(orarioPartenzaMinuti - orarioArrivoMinuti);
-        this.prezzo = (int)(((float) (consumoOrario * durataMinuti) / 60 / postiTotali)*100) / 100.0f; // 1.35832 --> 1.35
+
+        float prezzoBase = (int)(((float) (consumoOrario * durataMinuti) / 60 / postiTotali)*100) / 100.0f; // 1.35832 --> 1.35
+        this.prezzoEconomy = prezzoBase;
+        this.prezzoBusiness = (float) (prezzoBase * (1 + (0.10 + random.nextDouble(0.30))));
+        this.prezzoBusiness = (int)(this.prezzoBusiness * 100) / 100.0f;
+
+        this.postiTotaliEconomy = (int) (postiTotali * (.50 + random.nextDouble(0.30)));
+        this.postiTotaliEconomyOccupati = random.nextInt(postiTotaliEconomy);
+        this.postiTotaliBusiness = postiTotali - postiTotaliEconomy;
+        this.postiTotaliBusinessOccupati = random.nextInt(postiTotaliBusiness);
+    }
+
+    public int getPostiEconomyDisp() {
+        return this.postiTotaliEconomy - this.postiTotaliEconomyOccupati;
+    }
+    public boolean isEconomyDisp() {
+        return this.getPostiEconomyDisp() >= 1;
+    }
+    public int getPostiBusinessDisp() {
+        return this.postiTotaliBusiness - this.postiTotaliBusinessOccupati;
+    }
+    public boolean isBusinessDisp() {
+        return this.getPostiBusinessDisp() >= 1;
     }
 }
