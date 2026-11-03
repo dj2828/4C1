@@ -20,10 +20,12 @@ class Volo {
 
     static Random random = new Random();
 
+    public int indice_volo;
+
     static int consumoOrario = 2500;
 
     public Volo(String origine, String destinazione,
-                int orarioPartenzaMinuti, int orarioArrivoMinuti, int postiTotali, int gate) {
+                int orarioPartenzaMinuti, int orarioArrivoMinuti, int postiTotali, int gate, int indice_volo) {
 
         if (postiTotali <= 0) {
             throw new IllegalArgumentException("I posti totali devono essere maggiori di zero.");
@@ -35,6 +37,7 @@ class Volo {
         this.orarioArrivoMinuti = orarioArrivoMinuti;
         this.postiTotali = postiTotali;
         this.gate = gate;
+        this.indice_volo = indice_volo;
 
         this.durataMinuti = Math.abs(orarioPartenzaMinuti - orarioArrivoMinuti);
 

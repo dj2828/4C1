@@ -1,8 +1,8 @@
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 class Aeroporto {
@@ -12,11 +12,7 @@ class Aeroporto {
     static String[] aeroporti = {"Milano Malpensa (MXP)", "Milano Linate (LIN)", "Bergamo (BGY)", "Torino (TRN)", "Roma Fiumicino (FCO)", "New York (JFK)", "Berlino (SXF)", "Stoccolma (BMA)"};
     static String[] stato = {"I", "I", "I", "I", "I", "USA", "G", "Sv"};
 
-    public static String convertiMinutiInOra(int minutiTotali) {
-        int ore = minutiTotali / 60;
-        int minuti = minutiTotali % 60;
-        return String.format("%02d:%02d", ore, minuti);
-    }
+    static ArrayList<Prenotazione> prenotazioni = new ArrayList<>();
 
     static Volo[] initVoli() {
         Volo[] voli = new Volo[8];
@@ -48,7 +44,7 @@ class Aeroporto {
                                 random_ora_partenza_minuti,
                                 random_ora_arrivo_minuti,
                                 150 + random.nextInt(151),
-                                random.nextInt(10));
+                                random.nextInt(10), i);
         }
 
         return voli;
@@ -111,6 +107,8 @@ class Aeroporto {
                     \n1) Cerca voli
                     2) Tutti i voli
                     3) Compra volo
+                    4) Controlla prenotazioni
+                    5) Exit
                     """);
             int scelta = askInt("? ");
 
@@ -122,7 +120,7 @@ class Aeroporto {
                 int query = askInt("Da? ");
 
                 for (Volo volo: voli) {
-                    if (aeroporti[query] == volo.origine) {
+                    if (Objects.equals(aeroporti[query], volo.origine)) {
                         voliOk.add(volo);
                     }
                 }
@@ -132,9 +130,11 @@ class Aeroporto {
                 } else {
                     stampaTabella(voliOk);
                 }
-            } else if (scelta == 2) {
+            }
+            else if (scelta == 2) {
                 stampaTabella(List.of(voli));
-            } else if (scelta == 3) {
+            }
+            else if (scelta == 3) {
                 stampaTabella(List.of(voli));
 
                 int _scelta = askInt("Volo? ");
@@ -153,13 +153,15 @@ class Aeroporto {
                     } else {
                         System.out.println("-) Business - 0 posti disponibili");
                     }
+                    System.out.println("3) Annulla");
 
                     _scelta = askInt("? ");
 
                     if (_scelta == 1) {
                         if (voloScelto.isEconomyDisp()) {
                             voloScelto.postiTotaliEconomyOccupati++;
-                            System.out.println("Transizione completata: " + voloScelto.prezzoEconomy + "€");
+                            prenotazioni.add(new Prenotazione(voloScelto.indice_volo, voloScelto.prezzoEconomy, "Economy"));
+                            System.out.println("Transazione completata: " + voloScelto.prezzoEconomy + "€");
                             break;
                         } else {
                             System.out.println("Economy non disponibile");
@@ -167,16 +169,104 @@ class Aeroporto {
                     } else if (_scelta == 2) {
                         if (voloScelto.isBusinessDisp()) {
                             voloScelto.postiTotaliBusinessOccupati++;
-                            System.out.println("Transizione completata: " + voloScelto.prezzoBusiness + "€");
+                            prenotazioni.add(new Prenotazione(voloScelto.indice_volo, voloScelto.prezzoBusiness, "Business"));
+                            System.out.println("Transazione completata: " + voloScelto.prezzoBusiness + "€");
                             break;
                         } else {
                             System.out.println("Business non disponibile");
                         }
+                    } else if (_scelta == 3) {
+                        break;
                     }
                 }
             }
+            else if (scelta == 4) {
+                if (prenotazioni.isEmpty()) {
+                    System.out.println("Nessuna prenotazione");
+                    continue;
+                }
+                Prenotazione.stampaTabella(prenotazioni, voli);
 
+                int prenotazione_i = askInt("Seleziona prenotazione (" + prenotazioni.size() + " exit): ");
 
+                if (prenotazione_i > prenotazioni.size()) {
+                    System.out.println("Nessuna prenotazione");
+                }
+                else if (prenotazione_i == prenotazioni.size()) {
+                    continue;
+                }
+
+                System.out.println("\n| " + voli[prenotazione_i].origine + " | " + voli[prenotazione_i].destinazione + " |");
+                System.out.print("""
+                    1) Cancella prenotazione
+                    2) Modifica classe
+                    3) Indietro
+                    """);
+                int _scelta = askInt("? ");
+
+                if (_scelta == 1) {
+                    prenotazioni.remove(prenotazione_i);
+                    System.out.println("Prenotazione cancellata");
+                }
+                else if (_scelta == 2) {
+                    Volo voloScelto = voli[prenotazione_i];
+                    while (true) {
+                        // deve essercene almeno un posto libero
+                        if (voloScelto.isEconomyDisp()) {
+                            System.out.println("1) Economy - " + voloScelto.getPostiEconomyDisp() + " posti disponibili - " + voloScelto.prezzoEconomy + "€");
+                        } else {
+                            System.out.println("-) Economy - 0 posti disponibili");
+                        }
+                        if (voloScelto.isBusinessDisp()) {
+                            System.out.println("2) Business - " + voloScelto.getPostiBusinessDisp() + " posti disponibili - " + voloScelto.prezzoBusiness + "€");
+                        } else {
+                            System.out.println("-) Business - 0 posti disponibili");
+                        }
+                        System.out.println("3) Annulla");
+
+                        _scelta = askInt("? ");
+
+                        if (_scelta == 1) {
+                            if (voloScelto.isEconomyDisp()) {
+                                voloScelto.postiTotaliEconomyOccupati++;
+                                prenotazioni.set(prenotazione_i, new Prenotazione(voloScelto.indice_volo, voloScelto.prezzoEconomy, "Economy"));
+                                System.out.println("Modifica completata: " + voloScelto.prezzoEconomy + "€");
+
+                                // aggiorna il vecchio posto
+                                if (prenotazioni.get(prenotazione_i).classe.equals("Economy")) {
+                                    voloScelto.postiTotaliEconomyOccupati--;
+                                } else {
+                                    voloScelto.postiTotaliBusinessOccupati--;
+                                }
+                                break;
+                            } else {
+                                System.out.println("Economy non disponibile");
+                            }
+                        } else if (_scelta == 2) {
+                            if (voloScelto.isBusinessDisp()) {
+                                voloScelto.postiTotaliBusinessOccupati++;
+                                prenotazioni.set(prenotazione_i, new Prenotazione(voloScelto.indice_volo, voloScelto.prezzoBusiness, "Business"));
+                                System.out.println("Modifica completata: " + voloScelto.prezzoBusiness + "€");
+
+                                // aggiorna il vecchio posto
+                                if (prenotazioni.get(prenotazione_i).classe.equals("Economy")) {
+                                    voloScelto.postiTotaliEconomyOccupati--;
+                                } else {
+                                    voloScelto.postiTotaliBusinessOccupati--;
+                                }
+                                break;
+                            } else {
+                                System.out.println("Business non disponibile");
+                            }
+                        } else if (_scelta == 3) {
+                            break;
+                        }
+                    }
+                }
+            }
+            else if (scelta == 5) {
+                break;
+            }
         }
     }
 }
