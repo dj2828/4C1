@@ -33,7 +33,7 @@ class Aeroporto {
 
             int random_ora_partenza_minuti = random.nextInt(24*60);
             int random_ora_arrivo_minuti;
-            if (stato[random_partenza] == stato[random_arrivo]) {
+            if (Objects.equals(stato[random_partenza], stato[random_arrivo])) {
                 random_ora_arrivo_minuti = random_ora_partenza_minuti + 30 + random.nextInt(2*60);
             } else {
                 random_ora_arrivo_minuti = random_ora_partenza_minuti + 2 * 60 + random.nextInt(2 * 60);
@@ -62,7 +62,7 @@ class Aeroporto {
     }
 
     static void stampaTabella(List<Volo> voli) {
-        // Separatore esatto ricalcolato su tutte le colonne
+        // separatore esatto ricalcolato su tutte le colonne
         String separatore = "+---+--------------------------------+--------------------------------+----------+----------+----------+-------+---------------+---------------+------------+------------+";
 
         System.out.println(separatore);
