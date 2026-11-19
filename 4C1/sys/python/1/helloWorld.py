@@ -52,3 +52,16 @@ lista.extend([2, 3])
 print(lista)
 lista.insert(1, "skibidi")
 print(lista)
+
+def skibidizza(text):
+    print("skibidi", text)
+
+skibidizza("sasso")
+
+numeri = [1,2,5]
+
+for i in numeri:
+    skibidizza(i)
+
+for i, lettera in enumerate("sasso"):
+    print(i, lettera.upper())
