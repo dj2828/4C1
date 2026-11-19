@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Random;
 
 public class Parcheggio {
@@ -45,7 +43,14 @@ public class Parcheggio {
                 7. Verifica se il parcheggio è completamente vuoto
                 8. Esci
                 ?\s""");
-            scelta = Integer.parseInt(input.readLine());
+            while (true) {
+                try {
+                    scelta = Integer.parseInt(input.readLine());
+                    break;
+                } catch (Exception e) {
+                    System.out.print("Inserisci un numero\n? ");
+                }
+            }
 
             if (scelta == 1) {
                 print(mat);
@@ -86,7 +91,7 @@ public class Parcheggio {
                 if (r < 0 || r > mat.length-1) continue;
                 System.out.print(" colonna? ");
                 int c = Integer.parseInt(input.readLine());
-                if (c < 0 || c > mat.length-1) continue;
+                if (c < 0 || c > mat[0].length-1) continue;
                 if (mat[r][c] == 0) {
                     System.out.println("Posto gia libero");
                     continue;
@@ -117,5 +122,13 @@ public class Parcheggio {
                 }
             }
         } while (scelta != 8);
+
+        PrintWriter file = new PrintWriter(new FileWriter("parcheggio.txt"));
+        for (int[] i: mat) {
+            for (int j: i)
+                file.print(j + " ");
+            file.println();
+        }
+        file.close();
     }
 }
